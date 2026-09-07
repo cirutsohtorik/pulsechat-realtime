@@ -6,6 +6,8 @@
 [![WebSockets](https://img.shields.io/badge/WebSockets-Native-orange)](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
 [![Status](https://img.shields.io/badge/Build-Passing-brightgreen)]()
 
+![PulseChat Interface](assets/pulsechat-preview.jpg)
+
 A production-grade, full-duplex real-time communication platform engineered from the socket layer up. Built with **TypeScript**, **native WebSockets**, **persistent database storage**, **JWT session verification**, and a responsive client interface.
 
 Created by [**cirutsohtorik**](https://github.com/cirutsohtorik).
