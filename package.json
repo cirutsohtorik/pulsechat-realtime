@@ -1,0 +1,32 @@
+{
+  "name": "pulsechat-realtime",
+  "version": "1.0.0",
+  "description": "Production-grade, low-latency Real-Time Chat Engine with WebSockets, persistent storage, JWT authentication, and multi-room broadcasting.",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node src/server.ts",
+    "test": "node dist/tests/server.test.js"
+  },
+  "keywords": [
+    "websocket",
+    "realtime",
+    "chat",
+    "typescript",
+    "persistence",
+    "fullstack"
+  ],
+  "author": "cirutsohtorik <https://github.com/cirutsohtorik>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.17.10",
+    "@types/ws": "^8.5.13",
+    "typescript": "^5.7.2"
+  }
+}

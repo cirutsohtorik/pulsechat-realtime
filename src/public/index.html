@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseChat — Real-Time Engine</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Login Modal -->
+  <div id="auth-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="logo-icon">⚡</div>
+        <h2>Join PulseChat</h2>
+        <p>A low-latency, bidirectional real-time communication platform.</p>
+      </div>
+      <form id="auth-form">
+        <div class="form-group">
+          <label for="username-input">Choose your username</label>
+          <input 
+            type="text" 
+            id="username-input" 
+            placeholder="e.g. dev_user" 
+            required 
+            minlength="2" 
+            maxlength="24"
+            autocomplete="off"
+            autofocus
+          />
+        </div>
+        <button type="submit" id="login-btn" class="primary-btn">Enter Workspace</button>
+      </form>
+      <div class="modal-footer">
+        <span>Powered by native WebSockets + Persistent Storage</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Chat Application Container -->
+  <div class="app-layout">
+    <!-- Sidebar: Channels & Workspace -->
+    <aside class="sidebar">
+      <div class="workspace-header">
+        <div class="workspace-badge">
+          <span class="pulse-dot"></span>
+          <span class="workspace-title">PulseChat Hub</span>
+        </div>
+        <span class="latency-badge" id="connection-status" title="Connection status">Connecting...</span>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-title">CHANNELS</div>
+        <ul id="rooms-list" class="rooms-list">
+          <li data-room="general" class="room-item active">
+            <span class="hashtag">#</span>
+            <span class="room-name">general</span>
+          </li>
+          <li data-room="engineering" class="room-item">
+            <span class="hashtag">#</span>
+            <span class="room-name">engineering</span>
+          </li>
+          <li data-room="random" class="room-item">
+            <span class="hashtag">#</span>
+            <span class="room-name">random</span>
+          </li>
+          <li data-room="showcase" class="room-item">
+            <span class="hashtag">#</span>
+            <span class="room-name">showcase</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section users-section">
+        <div class="section-title">
+          <span>ACTIVE IN ROOM</span>
+          <span class="counter" id="active-user-count">0</span>
+        </div>
+        <ul id="users-list" class="users-list">
+          <!-- Dynamic active user tags -->
+        </ul>
+      </div>
+
+      <div class="user-profile-bar">
+        <div class="avatar" id="current-user-avatar">?</div>
+        <div class="user-details">
+          <div class="user-name" id="current-user-name">Guest</div>
+          <div class="user-status">Online</div>
+        </div>
+        <button id="logout-btn" class="icon-btn" title="Change User">⇦</button>
+      </div>
+    </aside>
+
+    <!-- Chat Main Area -->
+    <main class="chat-main">
+      <!-- Chat Header -->
+      <header class="chat-header">
+        <div class="channel-info">
+          <span class="header-hashtag">#</span>
+          <h1 id="active-room-title">general</h1>
+          <span class="channel-desc" id="active-room-desc">Public discussion for everyone</span>
+        </div>
+        <div class="header-actions">
+          <button id="clear-btn" class="header-action-btn" title="Clear local view">Clear View</button>
+        </div>
+      </header>
+
+      <!-- Message Stream -->
+      <div id="messages-container" class="messages-container">
+        <!-- Messages appended dynamically -->
+      </div>
+
+      <!-- Typing Indicator -->
+      <div id="typing-indicator" class="typing-indicator">
+        <span class="typing-dots"><span></span><span></span><span></span></span>
+        <span id="typing-text"></span>
+      </div>
+
+      <!-- Input Bar -->
+      <footer class="input-area">
+        <form id="message-form" class="message-form">
+          <input 
+            type="text" 
+            id="message-input" 
+            placeholder="Message #general..." 
+            autocomplete="off"
+            maxlength="2000"
+          />
+          <button type="submit" id="send-btn" class="send-btn">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path>
+            </svg>
+          </button>
+        </form>
+      </footer>
+    </main>
+  </div>
+
+  <script src="/js/socket.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
